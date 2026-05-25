@@ -127,7 +127,7 @@
     /* ── Hero ── */
     .hero {
       min-height: 100vh;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      display: grid; grid-template-columns: 0.9fr 1.1fr;
       align-items: center; padding: 120px 52px 80px; gap: 56px;
       position: relative; z-index: 1;
       max-width: 1280px; margin: 0 auto;
@@ -558,11 +558,12 @@
 
     /* ── Tablet mockup (hero) ── */
     .hero-devices {
-      position: relative; width: 560px; height: 460px;
+      position: relative; width: 580px; height: 480px;
     }
+    /* 平板：右側，較大，稍微順時針傾斜 */
     .tablet-wrap {
-      position: absolute; left: 0; top: 55px;
-      transform: rotate(-1.5deg);
+      position: absolute; right: 0; top: 60px;
+      transform: rotate(1.5deg);
       z-index: 2;
     }
     .tablet-glow {
@@ -571,7 +572,7 @@
       pointer-events: none; z-index: -1;
     }
     .tablet {
-      width: 424px; height: 282px;
+      width: 456px; height: 303px;
       background: #09090b; border-radius: 18px;
       border: 6px solid #2c2c30;
       box-shadow: 0 28px 72px rgba(0,0,0,0.65), 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04);
@@ -579,18 +580,17 @@
     }
     .tablet-screen { width: 100%; height: 100%; overflow: hidden; }
     .tablet-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-    /* Phone override inside hero-devices (smaller, behind) */
+    /* 手機：左側，稍微逆時針傾斜，在後方 */
     .hero-devices .phone-wrap {
-      position: absolute; right: 0; top: 18px;
-      transform: rotate(3.5deg); z-index: 1;
+      position: absolute; left: 0; top: 22px;
+      transform: rotate(-3.5deg); z-index: 1;
     }
-    .hero-devices .phone { width: 182px; height: 372px; }
+    .hero-devices .phone { width: 180px; height: 368px; }
     .hero-devices .phone::before { width: 48px; height: 12px; }
-    /* 通知泡泡：恢復顯示，往左移到平板右邊緣浮出 */
+    /* 通知泡泡：浮在兩裝置之間，z-index 高於平板 */
     .hero-devices .notif {
       display: block;
-      left: -148px; right: auto;
-      top: 28px;
+      z-index: 3;
     }
     .hero-devices .phone-glow { opacity: 0.4; }
 
