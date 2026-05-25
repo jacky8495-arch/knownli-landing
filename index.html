@@ -558,11 +558,11 @@
 
     /* ── Tablet mockup (hero) ── */
     .hero-devices {
-      position: relative; width: 520px; height: 440px;
+      position: relative; width: 560px; height: 460px;
     }
     .tablet-wrap {
-      position: absolute; left: 0; top: 50%;
-      transform: translateY(-50%) rotate(-1.5deg);
+      position: absolute; left: 0; top: 55px;
+      transform: rotate(-1.5deg);
       z-index: 2;
     }
     .tablet-glow {
@@ -571,9 +571,9 @@
       pointer-events: none; z-index: -1;
     }
     .tablet {
-      width: 390px; height: 259px;
-      background: #09090b; border-radius: 16px;
-      border: 7px solid #2a2a2e;
+      width: 424px; height: 282px;
+      background: #09090b; border-radius: 18px;
+      border: 6px solid #2c2c30;
       box-shadow: 0 28px 72px rgba(0,0,0,0.65), 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04);
       overflow: hidden;
     }
@@ -581,13 +581,18 @@
     .tablet-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
     /* Phone override inside hero-devices (smaller, behind) */
     .hero-devices .phone-wrap {
-      position: absolute; right: 0; top: 50%;
-      transform: translateY(-48%) rotate(3.5deg); z-index: 1;
+      position: absolute; right: 0; top: 18px;
+      transform: rotate(3.5deg); z-index: 1;
     }
-    .hero-devices .phone { width: 206px; height: 422px; }
-    .hero-devices .phone::before { width: 56px; height: 13px; }
-    .hero-devices .notif { display: none; }
-    .hero-devices .phone-glow { opacity: 0.5; }
+    .hero-devices .phone { width: 182px; height: 372px; }
+    .hero-devices .phone::before { width: 48px; height: 12px; }
+    /* 通知泡泡：恢復顯示，往左移到平板右邊緣浮出 */
+    .hero-devices .notif {
+      display: block;
+      left: -148px; right: auto;
+      top: 28px;
+    }
+    .hero-devices .phone-glow { opacity: 0.4; }
 
     /* ── Views showcase ── */
     .view-list { display: flex; flex-direction: column; gap: 72px; margin-top: 64px; }
@@ -1214,7 +1219,7 @@
   <section class="section" id="cases">
     <div class="wrap">
       <div class="sec-tag reveal">真實場景</div>
-      <h2 class="reveal rd1">店家用人的方式，<em>不是教科書</em></h2>
+      <h2 class="reveal rd1">真的在用的功能，<em>不是展示用的</em></h2>
       <p class="sec-lead reveal rd2">這些功能不是因為「系統要有」，是因為店家每天晚上真的會遇到這些事。</p>
       <div class="cases-grid">
 
