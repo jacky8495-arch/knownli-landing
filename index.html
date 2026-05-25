@@ -253,8 +253,7 @@
       background: rgba(26,22,18,0.92); backdrop-filter: blur(12px);
       border: 1px solid rgba(240,230,208,0.1); border-radius: 14px; padding: 11px 13px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(212,72,38,0.2);
-      transform: rotate(-2.5deg);
-      opacity: 0; animation: notifPop 0.6s cubic-bezier(0.34,1.4,0.64,1) forwards 2.4s;
+      opacity: 0; animation: notifSlide 0.45s cubic-bezier(0.22,1,0.36,1) forwards 2.4s;
     }
     .notif-header { display: flex; align-items: center; gap: 7px; margin-bottom: 5px; }
     .line-badge { width: 17px; height: 17px; background: #06c755; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; font-weight: 700; }
@@ -554,7 +553,7 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes phoneIn { from { opacity: 0; transform: translateX(32px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes notifPop { from { opacity: 0; transform: rotate(-2.5deg) scale(0.82); } to { opacity: 1; transform: rotate(-2.5deg) scale(1); } }
+    @keyframes notifSlide { from { opacity: 0; transform: translateY(14px) scale(0.94); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
     /* ── Tablet mockup (hero) ── */
     .hero-devices {
@@ -582,20 +581,25 @@
     }
     .tablet-screen { width: 100%; height: 100%; overflow: hidden; }
     .tablet-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
-    /* 手機：左側，逆時針微傾，在後方 */
+    /* 手機：左側，正直不傾斜，在後方 */
     .hero-devices .phone-wrap {
       position: absolute; left: 0; top: 22px;
-      transform: rotate(-3.5deg); z-index: 1;
+      z-index: 1;
     }
     .hero-devices .phone { width: 180px; height: 368px; }
     .hero-devices .phone::before { width: 48px; height: 12px; }
-    /* 通知泡泡：手機頂部浮出，像 iOS 通知從頂部滑下 */
+    /* 通知泡泡：手機底部右側浮出，往上滑（LINE 訊息出現動作），提早到 1.2s */
     .hero-devices .notif {
       display: block;
-      left: -8px; right: auto;
-      top: -58px;
+      left: -30px; right: auto;
+      top: auto; bottom: -28px;
+      width: 168px;
+      animation-delay: 1.2s;
+      transform-origin: right bottom;
       z-index: 3;
     }
+    .hero-devices .notif .notif-app { font-size: 9px; }
+    .hero-devices .notif .notif-body { font-size: 9.5px; }
     .hero-devices .phone-glow { opacity: 0.3; }
 
     /* ── Views showcase ── */
@@ -634,8 +638,11 @@
       .nav-hamburger { display: flex; }
 
       .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 0; min-height: auto; }
-      .hero-right { display: none; }
-      .scroll-ind { left: 24px; }
+      .hero-right { display: flex; justify-content: center; height: 300px; overflow: visible; }
+      .hero-devices { transform: scale(0.62); transform-origin: top center; }
+      .tablet-wrap { display: none; }
+      .hero-devices .phone-wrap { left: 200px; }
+      .scroll-ind { display: none; }
 
       .wrap { padding: 0 24px; }
       .section { padding: 80px 0; }
@@ -676,6 +683,8 @@
       footer { padding: 40px 20px 28px; }
       .footer-links { flex-direction: column; gap: 24px; }
       .faq-q-text { font-size: 15px; }
+      .hero-devices { transform: scale(0.52); }
+      .hero-right { height: 255px; }
     }
 
     /* ── Theme toggle button ── */
