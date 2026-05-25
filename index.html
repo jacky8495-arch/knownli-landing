@@ -637,9 +637,9 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
-      .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 0; min-height: auto; }
-      .hero-right { display: flex; justify-content: center; height: 300px; overflow: visible; }
-      .hero-devices { transform: scale(0.62); transform-origin: top center; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 24px; min-height: auto; }
+      .hero-right { display: block; position: relative; height: 338px; overflow: hidden; }
+      .hero-devices { position: absolute; left: calc(50% - 290px); top: 54px; transform: scale(0.56); transform-origin: top center; }
       .tablet-wrap { display: none; }
       .hero-devices .phone-wrap { left: 200px; }
       .scroll-ind { display: none; }
@@ -683,8 +683,8 @@
       footer { padding: 40px 20px 28px; }
       .footer-links { flex-direction: column; gap: 24px; }
       .faq-q-text { font-size: 15px; }
-      .hero-devices { transform: scale(0.52); }
-      .hero-right { height: 255px; }
+      .hero-devices { transform: scale(0.48); }
+      .hero-right { height: 292px; }
     }
 
     /* ── Theme toggle button ── */
@@ -1458,8 +1458,8 @@
         <div class="footer-col">
           <h4>公司</h4>
           <a href="#">關於我們</a>
-          <a href="#contact">聯絡我們</a>
-          <a href="#">隱私政策</a>
+          <a href="https://line.me/R/ti/p/@935qnczt" target="_blank" rel="noopener">聯絡我們</a>
+          <a href="./privacy.html">隱私政策</a>
         </div>
       </div>
     </div>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>隱私政策 — Knownli</title>
+  <link rel="icon" href="./knownli-icon-1024.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0e0c0a;
+      --ink: #f0e6d0;
+      --ink2: #c4b49a;
+      --ink3: #8a7a68;
+      --rust: #b83820;
+      --border: rgba(240,230,208,0.08);
+    }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: var(--bg);
+      color: var(--ink2);
+      line-height: 1.8;
+      font-size: 15px;
+      font-weight: 300;
+    }
+    nav {
+      padding: 18px 40px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon { width: 28px; height: 28px; border-radius: 7px; }
+    .logo-wordmark {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .logo-wordmark em { font-style: normal; color: var(--rust); }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 40px 120px;
+    }
+    .page-tag {
+      font-family: 'Outfit', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .updated {
+      font-size: 13px;
+      color: var(--ink3);
+      margin-bottom: 56px;
+    }
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 48px 0 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    p { margin-bottom: 14px; color: var(--ink2); }
+    ul { margin: 8px 0 14px 20px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--rust); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink3);
+      font-size: 13px;
+      margin-bottom: 40px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--ink); text-decoration: none; }
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .container { padding: 48px 20px 80px; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="./" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+      <img src="./knownli-icon-1024.png" class="logo-icon" alt="Knownli">
+      <span class="logo-wordmark">Known<em>li</em></span>
+    </a>
+  </nav>
+
+  <div class="container">
+    <a href="./" class="back-link">← 返回首頁</a>
+    <div class="page-tag">Legal</div>
+    <h1>隱私政策</h1>
+    <p class="updated">最後更新：2026 年 5 月 26 日</p>
+
+    <p>Knownli（以下簡稱「本服務」）由謙謙影像工作室所營運，致力於保護您的個人隱私。本政策說明我們如何收集、使用與保護您的個人資料。</p>
+
+    <h2>一、資料收集範圍</h2>
+    <p>使用本服務時，我們可能收集以下資料：</p>
+    <ul>
+      <li>店家資訊：店名、聯絡人姓名、電話、LINE 帳號</li>
+      <li>客人訂位資訊：姓名、電話末四碼、訂位時間與人數、口味偏好與備註</li>
+      <li>系統使用紀錄：登入時間、操作記錄、裝置資訊</li>
+    </ul>
+
+    <h2>二、資料使用目的</h2>
+    <p>收集的資料僅用於以下目的：</p>
+    <ul>
+      <li>提供訂位管理、顧客關係管理（CRM）核心功能</li>
+      <li>發送 LINE 訂位確認、提醒與通知訊息</li>
+      <li>改善系統穩定性與使用體驗</li>
+      <li>客服與技術支援</li>
+    </ul>
+
+    <h2>三、資料儲存與安全</h2>
+    <p>所有資料儲存於 Supabase 雲端資料庫，採用 AES-256 加密與行級安全（Row Level Security）保護。我們不會將您的個人資料出售、租借或交換給任何第三方。</p>
+
+    <h2>四、LINE 整合</h2>
+    <p>本服務透過 LINE Messaging API 提供訂位通知功能。當客人使用 LINE 訂位時，系統僅取得 LINE 顯示名稱及 User ID，不會存取其他 LINE 帳號資訊。相關資料處理遵循 <a href="https://terms.line.me/line_rules" target="_blank" rel="noopener">LINE 服務條款</a>。</p>
+
+    <h2>五、資料保留期限</h2>
+    <p>訂位與顧客資料依店家需求保留，店家可隨時於後台刪除個別顧客資料。帳號停用後，系統資料將於 90 天內完整刪除。</p>
+
+    <h2>六、您的權利</h2>
+    <p>依據個人資料保護法，您有權要求查詢、更正或刪除個人資料。如需行使上述權利，請透過以下方式聯絡我們。</p>
+
+    <h2>七、聯絡我們</h2>
+    <p>如對本隱私政策有任何疑問，歡迎透過 LINE 官方帳號與我們聯繫：</p>
+    <p><a href="https://line.me/R/ti/p/@935qnczt" target="_blank" rel="noopener">LINE @935qnczt</a>　｜　<a href="mailto:hello@knownli.com">hello@knownli.com</a></p>
+  </div>
+</body>
+</html>
