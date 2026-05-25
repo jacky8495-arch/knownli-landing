@@ -589,11 +589,11 @@
     }
     .hero-devices .phone { width: 180px; height: 368px; }
     .hero-devices .phone::before { width: 48px; height: 12px; }
-    /* 通知泡泡：移到手機左側，z-index 最高 */
+    /* 通知泡泡：手機頂部浮出，像 iOS 通知從頂部滑下 */
     .hero-devices .notif {
       display: block;
-      left: -170px; right: auto;
-      top: 36px;
+      left: -8px; right: auto;
+      top: -58px;
       z-index: 3;
     }
     .hero-devices .phone-glow { opacity: 0.3; }
