@@ -56,14 +56,14 @@
     .nav-rule {
       position: fixed; top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, transparent 0%, var(--rust) 40%, var(--rust-lt) 60%, transparent 100%);
-      z-index: 101; opacity: 0.7;
+      z-index: 201; opacity: 0.7;
     }
     nav {
       position: fixed; top: 0; left: 0; right: 0;
       padding: 16px 52px;
       display: flex; justify-content: space-between; align-items: center;
-      z-index: 100;
-      background: rgba(14,12,9,0.88); backdrop-filter: blur(16px);
+      z-index: 200;
+      background: rgba(14,12,9,0.94); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(240,230,208,0.07);
       opacity: 0; animation: fadeIn 0.6s ease forwards 0.2s;
     }
@@ -113,7 +113,7 @@
       display: none; position: fixed; top: 57px; left: 0; right: 0;
       background: rgba(14,12,9,0.97); backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(240,230,208,0.07);
-      z-index: 99; flex-direction: column; padding: 8px 24px 24px;
+      z-index: 199; flex-direction: column; padding: 8px 24px 24px;
     }
     .mobile-menu.open { display: flex; }
     .mobile-menu a {
@@ -680,14 +680,34 @@
     @media (max-width: 600px) {
       h1 { font-size: 32px; }
       h2 { font-size: 26px; }
-      .hero { padding: 88px 20px 52px; }
+      .hero {
+        grid-template-columns: 1fr 155px;
+        overflow: visible;
+        padding: 88px 20px 40px;
+        gap: 8px;
+      }
+      .hero h1 { font-size: 20px; line-height: 1.45; }
+      .hero-right {
+        overflow: visible;
+        padding-top: 24px;
+        justify-content: flex-start;
+      }
+      .hero-devices { width: 148px; height: 302px; }
+      .hero-devices .phone { width: 148px; height: 302px; }
+      .hero-devices .phone::before { width: 40px; height: 10px; }
+      .hero-devices .notif {
+        left: -58px;
+        right: auto;
+        top: -44px;
+        width: 140px;
+      }
+      .cta-row .btn-ghost { display: none; }
       .wrap { padding: 0 20px; }
       .section { padding: 64px 0; }
       .cta-section { padding: 64px 20px; }
       footer { padding: 40px 20px 28px; }
       .footer-links { flex-direction: column; gap: 24px; }
       .faq-q-text { font-size: 15px; }
-      .hero h1 { font-size: 20px; line-height: 1.45; }
     }
 
     /* ── Theme toggle button ── */
@@ -726,7 +746,7 @@
       background: radial-gradient(ellipse at 30% 80%, rgba(184,56,32,0.05) 0%, transparent 60%);
     }
     [data-theme="light"] nav {
-      background: rgba(245,239,227,0.92);
+      background: rgba(245,239,227,0.98);
       border-bottom-color: rgba(28,21,16,0.1);
     }
     [data-theme="light"] .nav-rule {
