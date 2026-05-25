@@ -556,6 +556,63 @@
     @keyframes phoneIn { from { opacity: 0; transform: translateX(32px); } to { opacity: 1; transform: translateX(0); } }
     @keyframes notifPop { from { opacity: 0; transform: rotate(-2.5deg) scale(0.82); } to { opacity: 1; transform: rotate(-2.5deg) scale(1); } }
 
+    /* ── Tablet mockup (hero) ── */
+    .hero-devices {
+      position: relative; width: 520px; height: 440px;
+    }
+    .tablet-wrap {
+      position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%) rotate(-1.5deg);
+      z-index: 2;
+    }
+    .tablet-glow {
+      position: absolute; inset: -30px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(212,72,38,0.12) 0%, transparent 65%);
+      pointer-events: none; z-index: -1;
+    }
+    .tablet {
+      width: 390px; height: 259px;
+      background: #09090b; border-radius: 16px;
+      border: 7px solid #2a2a2e;
+      box-shadow: 0 28px 72px rgba(0,0,0,0.65), 0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+    .tablet-screen { width: 100%; height: 100%; overflow: hidden; }
+    .tablet-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+    /* Phone override inside hero-devices (smaller, behind) */
+    .hero-devices .phone-wrap {
+      position: absolute; right: 0; top: 50%;
+      transform: translateY(-48%) rotate(3.5deg); z-index: 1;
+    }
+    .hero-devices .phone { width: 206px; height: 422px; }
+    .hero-devices .phone::before { width: 56px; height: 13px; }
+    .hero-devices .notif { display: none; }
+    .hero-devices .phone-glow { opacity: 0.5; }
+
+    /* ── Views showcase ── */
+    .view-list { display: flex; flex-direction: column; gap: 72px; margin-top: 64px; }
+    .view-item { display: grid; grid-template-columns: 1fr 1.65fr; gap: 56px; align-items: center; }
+    .view-num {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); font-family: 'Outfit', sans-serif; font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .view-title {
+      font-family: 'Fraunces', 'Noto Serif TC', serif;
+      font-size: 26px; font-weight: 400; color: var(--ink); line-height: 1.3;
+      margin-bottom: 14px; letter-spacing: -0.01em;
+    }
+    .view-desc { font-size: 14.5px; line-height: 1.85; color: var(--ink2); font-weight: 300; }
+    .view-tablet-wrap { display: flex; justify-content: flex-end; }
+    .view-tablet {
+      width: 100%; max-width: 600px; aspect-ratio: 1140/757;
+      background: #09090b; border-radius: 16px;
+      border: 7px solid #2a2a2e;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.04);
+      overflow: hidden; transform: rotate(-0.5deg);
+    }
+    .view-tablet img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; }
+
     /* ── Responsive ── */
     @media (max-width: 1080px) {
       .plans-row { grid-template-columns: repeat(2, 1fr); }
@@ -584,6 +641,9 @@
       .step-connector { display: none; }
 
       .cases-grid { grid-template-columns: 1fr; gap: 14px; }
+      .view-item { grid-template-columns: 1fr; gap: 28px; }
+      .view-tablet-wrap { justify-content: center; }
+      .view-tablet { max-width: 100%; }
 
       .billing-switch { width: 100%; }
       .bill-btn { flex: 1; justify-content: center; }
@@ -857,7 +917,18 @@
         </div>
       </div>
 
-      <div class="hero-right" id="phone-wrap">
+      <div class="hero-right">
+        <div class="hero-devices">
+          <!-- Tablet (front) showing dashboard -->
+          <div class="tablet-wrap">
+            <div class="tablet-glow"></div>
+            <div class="tablet">
+              <div class="tablet-screen">
+                <img src="./ui-dayview.png" alt="Knownli 後台日視圖">
+              </div>
+            </div>
+          </div>
+          <!-- Phone (behind) showing LIFF booking form -->
         <div class="phone-wrap">
           <div class="phone-glow"></div>
           <div class="phone">
@@ -925,6 +996,7 @@
             </div>
           </div>
         </div>
+        </div><!-- end hero-devices -->
       </div>
     </div>
 
@@ -1023,37 +1095,85 @@
         <p class="sec-lead reveal rd2">不是示意圖。這就是謙謙影像正在使用的後台。</p>
       </div>
 
-      <!-- Tab switcher -->
-      <div class="showcase-tabs reveal rd2">
-        <button class="sc-tab active" onclick="switchShowcase(0)">訂位清單</button>
-        <button class="sc-tab" onclick="switchShowcase(1)">月曆總覽</button>
-        <button class="sc-tab" onclick="switchShowcase(2)">班表管理</button>
-      </div>
+      <div class="view-list">
 
-      <!-- Browser frame -->
-      <div class="showcase-frame reveal rd3">
-        <div class="sc-bar">
-          <div class="sc-dots"><span></span><span></span><span></span></div>
-          <div class="sc-url">app.knownli.com/dashboard</div>
+        <!-- 1. 日視圖 -->
+        <div class="view-item reveal">
+          <div class="view-text">
+            <div class="view-num">01 &nbsp;·&nbsp; 日視圖</div>
+            <div class="view-title">今晚訂位，一覽無遺</div>
+            <p class="view-desc">每張卡片顯示姓名、人數、時間與狀態。點開右側展開顧客完整資料、來店記錄與口味偏好。確認、入座、完成，狀態一鍵切換，不需翻筆記也不需問同事。</p>
+          </div>
+          <div class="view-tablet-wrap">
+            <div class="view-tablet">
+              <img src="./ui-dayview.png" alt="日視圖">
+            </div>
+          </div>
         </div>
-        <div class="sc-screen">
-          <img src="./knownli-ui-dayview.jpg" class="sc-img active" id="sc-0" alt="訂位清單">
-          <img src="./knownli-ui-calendar.png" class="sc-img" id="sc-1" alt="月曆總覽">
-          <img src="./knownli-ui-schedule.png" class="sc-img" id="sc-2" alt="班表管理">
-        </div>
-      </div>
 
-      <!-- Captions -->
-      <div class="sc-captions">
-        <div class="sc-caption active" id="sc-cap-0">
-          <strong>訂位清單</strong>　選定日期，當天所有訂位一列排開。客人姓名、時間、人數、狀態（確認 / 入座 / 完成），不用翻筆記，不用問同事。
+        <!-- 2. 時間軸 -->
+        <div class="view-item reveal">
+          <div class="view-text">
+            <div class="view-num">02 &nbsp;·&nbsp; 時間軸</div>
+            <div class="view-title">桌況一目了然，拖曳即調整</div>
+            <p class="view-desc">橫軸時間、縱軸桌位，一眼看清哪個時段哪桌有人。長按拖曳可即時換桌或調整時間，異動後自動發 LINE 通知給客人。右下角一鍵新增 Walk-in。</p>
+          </div>
+          <div class="view-tablet-wrap">
+            <div class="view-tablet">
+              <img src="./ui-timeline.png" alt="時間軸">
+            </div>
+          </div>
         </div>
-        <div class="sc-caption" id="sc-cap-1">
-          <strong>月曆總覽</strong>　一個月的訂位量一眼看盡。哪天滿、哪天還有位，點日期直接跳到當天清單。右上角「本月 49 位」即時統計。
+
+        <!-- 3. 月曆 -->
+        <div class="view-item reveal">
+          <div class="view-text">
+            <div class="view-num">03 &nbsp;·&nbsp; 月曆</div>
+            <div class="view-title">整月訂位分佈，哪天滿一眼知道</div>
+            <p class="view-desc">橘色數字代表當天訂位筆數，哪天滿、哪天還有空位，一眼看清。點日期直接展開當天清單，不需要在多個頁面之間切換。</p>
+          </div>
+          <div class="view-tablet-wrap">
+            <div class="view-tablet">
+              <img src="./ui-calendar.png" alt="月曆">
+            </div>
+          </div>
         </div>
-        <div class="sc-caption" id="sc-cap-2">
-          <strong>班表管理</strong>　店員排班一頁搞定。標色區分人員、長按拖曳調整日期，指定店員訂位自動只顯示當天在班的人，不會讓客人選到排休的店員。
+
+        <!-- 4. 平面圖 -->
+        <div class="view-item reveal">
+          <div class="view-text">
+            <div class="view-num">04 &nbsp;·&nbsp; 平面圖</div>
+            <div class="view-title">視覺化桌況，指派座位不靠記憶</div>
+            <p class="view-desc">即時顯示每桌狀態：空桌、已確認、入座中，顏色一目了然。點左側待入座名單，再點右側空桌，直接完成指派，現場客也能快速 Walk-in 登記。</p>
+          </div>
+          <div class="view-tablet-wrap">
+            <div class="view-tablet">
+              <img src="./ui-floor.png" alt="平面圖">
+            </div>
+          </div>
         </div>
+
+        <!-- 5. 班表 -->
+        <div class="view-item reveal">
+          <div class="view-text">
+            <div class="view-num">05 &nbsp;·&nbsp; 班表</div>
+            <div class="view-title">排班一頁搞定，指定店員自動連動</div>
+            <p class="view-desc">月視圖排班，拖曳店員到日期即可建立班次。班表一設定，指定店員訂位就只會顯示當天在班的人，不讓客人選到排休的店員造成困擾。</p>
+          </div>
+          <div class="view-tablet-wrap">
+            <div class="view-tablet">
+              <img src="./ui-schedule.png" alt="班表">
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end view-list -->
+
+      <!-- hidden legacy captions kept for JS compatibility -->
+      <div style="display:none">
+        <div class="sc-caption active" id="sc-cap-0"></div>
+        <div class="sc-caption" id="sc-cap-1"></div>
+        <div class="sc-caption" id="sc-cap-2"></div>
       </div>
     </div>
   </section>
