@@ -637,9 +637,9 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
-      .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 24px; min-height: auto; }
-      .hero-right { display: block; position: relative; height: 338px; overflow: hidden; }
-      .hero-devices { position: absolute; left: calc(50% - 290px); top: 54px; transform: scale(0.56); transform-origin: top center; }
+      .hero { grid-template-columns: 1fr; padding: 100px 24px 48px; gap: 32px; min-height: auto; }
+      .hero-right { display: flex; justify-content: center; padding-top: 28px; overflow: visible; }
+      .hero-devices { zoom: 0.55; }
       .hero-devices .phone-wrap { left: 200px; }
       .scroll-ind { display: none; }
 
@@ -682,8 +682,7 @@
       footer { padding: 40px 20px 28px; }
       .footer-links { flex-direction: column; gap: 24px; }
       .faq-q-text { font-size: 15px; }
-      .hero-devices { transform: scale(0.48); }
-      .hero-right { height: 292px; }
+      .hero-devices { zoom: 0.47; }
     }
 
     /* ── Theme toggle button ── */
