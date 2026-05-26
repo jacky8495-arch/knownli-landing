@@ -273,15 +273,9 @@
     .notif-body { font-size: 10.5px; color: var(--ink); line-height: 1.55; }
     .notif-body strong { color: var(--rust); }
 
-    /* Phone frame — light mode */
+    /* Phone frame — light mode: keep dark like a real device, only soften shadow */
     [data-theme="light"] .phone {
-      background: #e8d9c4;
-      border-color: #c4b8a6;
-      box-shadow: 0 28px 72px rgba(0,0,0,0.15), 0 6px 20px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
-    }
-    [data-theme="light"] .phone::before {
-      background: #e8d9c4;
-      box-shadow: 0 0 0 2px #c4b8a6;
+      box-shadow: 0 28px 72px rgba(0,0,0,0.25), 0 6px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06);
     }
 
     /* Phone screen — light mode overrides */
@@ -721,6 +715,7 @@
       }
       /* 整個群組（phone + notif）縮 70%，不需要手動改任何內部尺寸 */
       .hero-devices {
+        width: 100%;             /* 對齊 160px 欄寬，避免 180px 繼承值超出欄位 */
         height: 258px;           /* = 368px × 0.7，固定 layout 高避免大空白 */
         overflow: visible;
         transform: scale(0.7);
