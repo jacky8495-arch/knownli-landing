@@ -682,25 +682,21 @@
       h2 { font-size: 26px; }
       .hero {
         grid-template-columns: 1fr 155px;
-        overflow: visible;
+        overflow: hidden;
         padding: 88px 20px 40px;
         gap: 8px;
       }
       .hero h1 { font-size: 20px; line-height: 1.45; }
       .hero-right {
-        overflow: visible;
+        overflow: hidden;
         padding-top: 24px;
         justify-content: flex-start;
       }
       .hero-devices { width: 148px; height: 302px; }
       .hero-devices .phone { width: 148px; height: 302px; }
       .hero-devices .phone::before { width: 40px; height: 10px; }
-      .hero-devices .notif {
-        left: -58px;
-        right: auto;
-        top: -44px;
-        width: 140px;
-      }
+      /* 負值座標在 iOS overflow:visible 下會逃出視窗，直接隱藏 */
+      .hero-devices .notif { display: none; }
       .cta-row .btn-ghost { display: none; }
       .wrap { padding: 0 20px; }
       .section { padding: 64px 0; }
