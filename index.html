@@ -697,7 +697,8 @@
       h1 { font-size: 32px; }
       h2 { font-size: 26px; }
       .hero {
-        grid-template-columns: 1fr 155px;
+        /* 160px 右欄：180px hero-devices 從 x=viewport-180 開始，剛好齊右邊緣不溢出 */
+        grid-template-columns: 1fr 160px;
         min-height: auto;
         overflow: hidden;
         padding: 88px 20px 40px;
@@ -706,22 +707,17 @@
       }
       .hero h1 { font-size: 20px; line-height: 1.45; }
       .hero-right {
-        overflow: hidden;
-        padding-top: 16px;
+        /* overflow:visible 讓通知可以在 padding-top 區域顯示，不被夾掉 */
+        overflow: visible;
+        padding-top: 40px;
         justify-content: flex-start;
       }
-      /* phone + notif 作為一個群組，縮小 30%；全部正值座標不逃出容器 */
-      .hero-devices { width: 150px; height: 290px; }
-      .hero-devices .phone-wrap { position: absolute; top: 80px; right: 0; left: auto; }
-      .hero-devices .phone { width: 104px; height: 210px; }
-      .hero-devices .phone::before { width: 28px; height: 7px; }
-      .hero-devices .notif {
-        display: block;
-        top: 4px;
-        left: 0;
-        right: auto;
-        bottom: auto;
-        width: 144px;
+      /* 整個群組（phone + notif）縮 70%，不需要手動改任何內部尺寸 */
+      .hero-devices {
+        height: 258px;           /* = 368px × 0.7，固定 layout 高避免大空白 */
+        overflow: visible;
+        transform: scale(0.7);
+        transform-origin: top right;
       }
       .cta-row .btn-ghost { display: none; }
       .wrap { padding: 0 20px; }
