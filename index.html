@@ -24,16 +24,19 @@
     }
 
     html {
-      scroll-behavior: smooth;
-      overscroll-behavior: none;
+      height: 100%;
+      overflow: hidden;
     }
 
     body {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      overscroll-behavior: none;
+      scroll-behavior: smooth;
       background: var(--bg);
       color: var(--ink);
       font-family: 'Outfit', 'Noto Sans TC', sans-serif;
-      overflow-x: hidden;
-      overscroll-behavior: none;
     }
 
     body::after {
@@ -713,8 +716,15 @@
       .hero-devices { width: 148px; height: 302px; }
       .hero-devices .phone { width: 148px; height: 302px; }
       .hero-devices .phone::before { width: 40px; height: 10px; }
-      /* 負值座標在 iOS overflow:visible 下會逃出視窗，直接隱藏 */
-      .hero-devices .notif { display: none; }
+      /* 正值座標，停在 hero-devices 範圍內，像 iOS 通知從 phone 頂部滑入 */
+      .hero-devices .notif {
+        display: block;
+        top: 16px;
+        left: 2px;
+        right: auto;
+        bottom: auto;
+        width: 144px;
+      }
       .cta-row .btn-ghost { display: none; }
       .wrap { padding: 0 20px; }
       .section { padding: 64px 0; }
@@ -1556,19 +1566,6 @@
   </div>
 
   <script>
-    // ── Prevent iOS rubber-band overscroll (content appearing above status bar) ──
-    (function() {
-      let startY = 0;
-      document.addEventListener('touchstart', function(e) {
-        startY = e.touches[0].clientY;
-      }, { passive: true });
-      document.addEventListener('touchmove', function(e) {
-        if (window.scrollY <= 0 && e.touches[0].clientY > startY) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-    })();
-
     // ── Theme toggle ──
     function toggleTheme() {
       const html = document.documentElement;
