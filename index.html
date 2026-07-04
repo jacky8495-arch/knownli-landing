@@ -1177,7 +1177,7 @@
                 <div class="cal-card">
                   <div class="section-label">選擇日期</div>
                   <div class="cal-nav">
-                    <button>‹</button><span>2026 年 5 月</span><button>›</button>
+                    <button>‹</button><span id="calMonth">2026 年 5 月</span><button>›</button>
                   </div>
                   <div class="cal-days-head">
                     <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
@@ -1224,7 +1224,7 @@
               <div class="notif-app">LINE · Knownli</div>
             </div>
             <div class="notif-body">
-              訂位確認！5/16 週五 21:00<br>
+              訂位確認！週五 21:00<br>
               指定店員：<strong>雯雯</strong> ✓
             </div>
           </div>
@@ -2068,6 +2068,11 @@
 </style>
 <script>
   (function () {
+    var calMonth = document.getElementById('calMonth');
+    if (calMonth) {
+      var now = new Date();
+      calMonth.textContent = now.getFullYear() + ' 年 ' + (now.getMonth() + 1) + ' 月';
+    }
     var notif = document.querySelector('.notif');
     var body = notif && notif.querySelector('.notif-body');
     var host = document.querySelector('.hero-container');
@@ -2075,11 +2080,11 @@
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // 每筆都帶一點 CRM 細節，呼應「訂位的那一刻就開始記住你」
     var feed = [
-      '訂位確認！5/16 週五 21:00<br>指定店員：<strong>雯雯</strong> ✓<span class="notif-meta">王小姐 · 老顧客，已來訪 8 次</span>',
+      '訂位確認！週五 21:00<br>指定店員：<strong>雯雯</strong> ✓<span class="notif-meta">王小姐 · 老顧客，已來訪 8 次</span>',
       '新訂位 · 今晚 19:00 · 2 位<br><strong>陳先生</strong> 已確認<span class="notif-meta">上次點 Highball · 喜歡靠窗</span>',
-      '訂位確認！5/17 週六 20:30 · 4 位<br>指定店員：<strong>阿哲</strong> ✓<span class="notif-meta">林小姐 · 生日聚會，備註已記下</span>',
+      '訂位確認！週六 20:30 · 4 位<br>指定店員：<strong>阿哲</strong> ✓<span class="notif-meta">林小姐 · 生日聚會，備註已記下</span>',
       '新訂位 · 今晚 22:00 · 6 位<br><strong>周經理</strong> 已確認<span class="notif-meta">公司聚餐 · 不要香菜</span>',
-      '訂位確認！5/18 週日 20:00 · 3 位<br>指定店員：<strong>雯雯</strong> ✓<span class="notif-meta">Amy · 第一次來，已加入顧客名單</span>'
+      '訂位確認！週日 20:00 · 3 位<br>指定店員：<strong>雯雯</strong> ✓<span class="notif-meta">Amy · 第一次來，已加入顧客名單</span>'
     ];
     var i = 0, timer = null;
     function show(idx) {
